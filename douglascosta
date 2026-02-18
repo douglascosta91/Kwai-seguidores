@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Kwai - @mineirinhodebh91</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #000;
+    color: white;
+    text-align: center;
+}
+
+.card {
+    background: #111;
+    margin: 40px 15px;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+img {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid orange;
+}
+
+h1 {
+    color: orange;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.add {
+    background: orange;
+    color: black;
+    font-weight: bold;
+}
+
+.reset {
+    background: #222;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Painel de Seguidores</h1>
+    <h2>Kwai</h2>
+
+    <img src="https://via.placeholder.com/150" alt="Foto Perfil">
+
+    <h2>@mineirinhodebh91</h2>
+
+    <h1><span id="seguidores">10000</span> Seguidores</h1>
+
+    <button class="add" onclick="adicionar()">+ Adicionar Seguidor</button>
+    <button class="reset" onclick="resetar()">Resetar Contador</button>
+</div>
+
+<script>
+let seguidores = localStorage.getItem("kwaiSeguidores");
+
+if(seguidores === null){
+    seguidores = 10000;
+    localStorage.setItem("kwaiSeguidores", seguidores);
+} else {
+    seguidores = parseInt(seguidores);
+}
+
+document.getElementById("seguidores").innerText = seguidores;
+
+function adicionar() {
+    let senha = prompt("Digite a senha admin:");
+    if (senha === "1234") {
+        seguidores++;
+        atualizar();
+    } else {
+        alert("Senha incorreta!");
+    }
+}
+
+function resetar(){
+    let senha = prompt("Digite a senha admin:");
+    if (senha === "1234") {
+        seguidores = 10000;
+        atualizar();
+    } else {
+        alert("Senha incorreta!");
+    }
+}
+
+function atualizar(){
+    document.getElementById("seguidores").innerText = seguidores;
+    localStorage.setItem("kwaiSeguidores", seguidores);
+}
+</script>
+
+</body>
+</html>
